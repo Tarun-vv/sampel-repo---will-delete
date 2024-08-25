@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+  </head>
+  <body>
+    <header class="header">
+      <p class="logo">The Logo</p>
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li><a class="main-nav-link" href="#">Section 1</a></li>
+          <li><a class="main-nav-link" href="#">Section 2</a></li>
+          <li><a class="main-nav-link" href="#">Section 3</a></li>
+          <li><a class="main-nav-link" href="#">Section 4</a></li>
+          <li><a class="main-nav-link nav-cta" href="#">Section 5</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn-mobile-nav">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="icon-mobile-nav menu-outline"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="icon-mobile-nav close-outline"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </header>
+
+    <section class="section-hero section1">
+      Section1 - hero -- does not have any effects
+      <div class="hero">
+        <div class="hero-text-box">
+          <h1 class="heading-primary">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+            soluta repudiandae
+          </h1>
+          <p class="hero-description">
+            ipsum suscipit aspernatur nesciunt aliquam, nostrum illum, obcaecati
+            voluptates eveniet dolor iure magni voluptatum!
+          </p>
+          <a href="#" class="btn btn--full">Start now!</a>
+          <a href="#" class="btn btn--outline">Learn more &darr;</a>
+        </div>
+        <div class="hero-img-box">
+          <img src="imgs/hero.png" class="hero-img" alt="Some description" />
+        </div>
+      </div>
+    </section>
+    <section class="section section2">Section2</section>
+    <section class="section section3">Section3</section>
+    <section class="section section4">Section4</section>
+    <section class="section section5">Section5</section>
+
+    <!-- CSS -->
+
+    <style>
+      /*  Styling the nav-bar */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        font-family: sans-serif;
+        overflow-x: hidden;
+        line-height: 1;
+        font-weight: 400;
+        color: #555;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 9.6rem;
+        padding: 0 4.8rem;
+        background-color: lightblue;
+        position: relative;
+      }
+
+      .logo {
+        font-size: 2.2rem;
+      }
+
+      .main-nav-list {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 3.2rem;
+      }
+
+      .main-nav-link:link,
+      .main-nav-link:visited {
+        display: inline-block;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 1.8rem;
+        transition: all 0.3s;
+      }
+
+      .main-nav-link:hover,
+      .main-nav-link:active {
+        color: lightpink;
+      }
+
+      .main-nav-link.nav-cta:link,
+      .main-nav-link.nav:visited {
+        padding: 1.2rem 3.2rem;
+        border-radius: 9px;
+        color: white;
+        background-color: lightpink; /* set to primary color*/
+      }
+
+      .main-nav-link.nav-cta:hover,
+      .main-nav-link.nav-cta:active {
+        background-color: palevioletred; /* dark version of primary color*/
+      }
+
+      /* Responsive for mobile */
+
+      .btn-mobile-nav {
+        border: none;
+        background: none;
+        cursor: pointer;
+        display: none;
+        z-index: 10;
+      }
+
+      .icon-mobile-nav {
+        height: 4.8rem;
+        width: 4.8rem;
+        color: #333;
+      }
+
+      .close-outline {
+        display: none;
+      }
+
+      /* media query */
+
+      @media (max-width: 59em) {
+        html {
+          font-size: 50%;
+        }
+
+        .btn-mobile-nav {
+          display: block;
+        }
+
+        .main-nav {
+          background-color: rgba(255, 255, 255, 0.97);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          transform: translateX(100%);
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.5s;
+
+          opacity: 0;
+
+          pointer-events: none;
+          visibility: hidden;
+        }
+
+        .nav-open .main-nav {
+          opacity: 1;
+          pointer-events: auto;
+          visibility: visible;
+          transform: translateX(0);
+        }
+
+        .nav-open .close-outline {
+          display: block;
+        }
+
+        .nav-open .menu-outline {
+          display: none;
+        }
+
+        .main-nav-list {
+          flex-direction: column;
+          gap: 4.8rem;
+        }
+
+        .main-nav-link:link,
+        .main-nav-link:visited {
+          font-size: 3rem;
+        }
+      }
+
+      /* HERO SECTION */
+
+      .section-hero {
+        padding: 9.6rem 0;
+      }
+
+      .hero {
+        max-width: 130rem;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 9.6rem;
+      }
+
+      .hero-img {
+        width: 100%;
+      }
+
+      .heading-primary {
+        font-size: 5.2rem;
+        font-weight: 700;
+        line-height: 1.05;
+        color: #333;
+        letter-spacing: -0.5px;
+        margin-bottom: 3.2rem;
+      }
+
+      .hero-description {
+        color: #333;
+        font-size: 2rem;
+        line-height: 1.5;
+        margin-bottom: 4.8rem;
+      }
+
+      .btn:link, 
+      .btn:visited {
+        color: #fff;
+        font-size: 2rem;
+        display: inline-block;
+        padding: 1.6rem 3.2rem;
+        border-radius: 9px;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .btn--full:link,
+      .btn--full:visited {
+        background-color: pink; /* primary color*/
+      }
+
+      .btn--full:hover,
+      .btn--full:active {
+        background-color: palevioletred; /* primary color*/
+      }
+
+      .btn--outline:link,
+      .btn--outline:visited {
+        background-color: blue; /* primary color*/
+        border: 1px solid blue;
+        color: #555;
+      }
+
+      .btn--outline:hover,
+      .btn--outline:active {
+        background-color: #fff;
+        box-shadow: inset 0 0 0 3px #fff;
+      }
+
+      /*Sections*/
+
+      section {
+        width: 100%;
+        font-size: 50px;
+        color: white;
+        transition: all 0.3s ease-in;
+      }
+
+      .section1 {
+      }
+
+      .section2 {
+        background-color: yellow;
+        height: 600px;
+      }
+
+      .section3 {
+        background-color: green;
+        height: 600px;
+      }
+
+      .section4 {
+        background-color: red;
+        height: 600px;
+      }
+
+      .section5 {
+        background-color: purple;
+        height: 600px;
+      }
+
+      .section-hidden {
+        transform: translateY(8rem);
+        opacity: 0;
+      }
+    </style>
+
+    <script>
+      // Mobile Navigation
+      const header = document.querySelector(".header");
+      const btnMobileNav = document.querySelector(".btn-mobile-nav");
+      btnMobileNav.addEventListener("click", function () {
+        header.classList.toggle("nav-open");
+      });
+
+      // Reveal sections
+
+      const allSections = document.querySelectorAll(".section");
+      const revealSection = function (entries, observer) {
+        const [entry] = entries;
+        console.log(entry);
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.remove("section-hidden");
+      };
+
+      const sectionObserver = new IntersectionObserver(revealSection, {
+        root: null,
+        threshold: 0.15,
+      });
+
+      allSections.forEach(function (section) {
+        sectionObserver.observe(section);
+        section.classList.add("section-hidden");
+      });
+    </script>
+  </body>
+</html>
